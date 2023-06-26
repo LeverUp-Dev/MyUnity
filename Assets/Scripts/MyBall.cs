@@ -16,6 +16,12 @@ public class MyBall : MonoBehaviour
     //Rigidbody 관련코드는 void FixedUpdate()에서 작성 권장
     void FixedUpdate()
     {
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        Vector3 vec = new Vector3(h, 0, v);
+
+        rigid.AddForce(vec, ForceMode.Impulse);
+
         //1.속력 바꾸기
         //rigid.velocity = Vector3.forward;
 
@@ -30,9 +36,25 @@ public class MyBall : MonoBehaviour
             Input.GetAxisRaw("Horizontal"),
             0, Input.GetAxisRaw("Vertical"));
 
-        rigid.AddForce(vec, ForceMode.Impulse); */
+        rigid.AddForce(vec, ForceMode.Impulse);*/
 
         //3.회전력
         //rigid.AddTorque(Vector3.down);
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "Cube")
+            rigid.AddForce(Vector3.up * 6, ForceMode.Impulse);
+    }
+
+    //콜라이더 충돌 이벤트 함수
+    void OnTriggerEnter() { }
+    void OnTriggerStay() { }
+    void OnTriggerExit() { }
+
+    //물리적 충돌로 발생하는 이벤트 함수
+    void OnCollisionEnter() { }
+    void OnCollisionStay() { }
+    void OnCollisionExit() { }
 }
