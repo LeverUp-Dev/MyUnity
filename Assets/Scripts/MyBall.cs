@@ -45,16 +45,21 @@ public class MyBall : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.name == "Cube")
-            rigid.AddForce(Vector3.up * 6, ForceMode.Impulse);
+            rigid.AddForce(Vector3.up * 3, ForceMode.Impulse);
+    }
+
+    public void Jump()
+    {
+        rigid.AddForce(Vector3.up * 80, ForceMode.Impulse);
     }
 
     //콜라이더 충돌 이벤트 함수
-    void OnTriggerEnter() { }
-    void OnTriggerStay() { }
-    void OnTriggerExit() { }
+    //void OnTriggerEnter() { }
+    //void OnTriggerStay() { }
+    //void OnTriggerExit() { }
 
     //물리적 충돌로 발생하는 이벤트 함수
-    void OnCollisionEnter() { }
-    void OnCollisionStay() { }
-    void OnCollisionExit() { }
+    //void OnCollisionEnter() { }
+    //void OnCollisionStay() { }
+    //void OnCollisionExit() { }
 }
